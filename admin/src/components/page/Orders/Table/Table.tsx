@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ORDERS__DATA from "../../../../api/orders"
 import Headings from "../Headings/Headings";
 import Pagination from "../Pagination/Pagination";

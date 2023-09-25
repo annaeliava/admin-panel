@@ -11,12 +11,12 @@ const Sidebar = () => {
     const { setSuccess } = useContext(AuthContext) as any
 
     const handleMain = () => {
-        navigate("/admin/dashboard")
+        navigate("/admin-panel/admin/dashboard")
         setTitle('Главная')
     }
 
     const handleOrders = () => {
-        navigate("/admin/orders")
+        navigate("/admin-panel/admin/orders")
         setTitle('Заказы')
     }
 

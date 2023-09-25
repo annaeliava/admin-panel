@@ -1,10 +1,9 @@
-import React, { useContext } from "react"
+import { useContext } from "react"
 import AdminApi from "../../../api/users"
 import {
     useForm,
     SubmitHandler
 } from "react-hook-form"
-import { useNavigate } from "react-router-dom"
 import AuthContext from "../../../context/AuthProvider"
 
 type FormInputs = {
