@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Disclosure } from "@headlessui/react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "../../../context/AuthProvider";
 
 const Sidebar = () => {
     const [title, setTitle] = useState<string>('Главная')
 
     const navigate = useNavigate()
+
+    const { setSuccess } = useContext(AuthContext) as any
 
     const handleMain = () => {
         navigate("/admin/dashboard")
@@ -73,8 +76,8 @@ const Sidebar = () => {
                                         </button>
                                     </li>
                                     <li className="rounded-sm">
-                                        <Link
-                                            to="/auth"
+                                        <button
+                                            onClick={() => setSuccess(false)}
                                             className="flex items-center p-2 space-x-3 rounded-md"
                                         >
                                             <svg
@@ -92,7 +95,7 @@ const Sidebar = () => {
                                                 />
                                             </svg>
                                             <span>Выйти</span>
-                                        </Link>
+                                        </button>
                                     </li>
                                 </ul>
                             </div>

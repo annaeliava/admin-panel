@@ -1,13 +1,16 @@
-import { Fragment } from 'react'
+import { Fragment, useContext } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
+import AuthContext from '../../../context/AuthProvider'
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
 }
 
 export default function Header() {
+    const { setSuccess } = useContext(AuthContext) as any
+
     return (
         <Disclosure as="header" className=" bg-transparent">
             <div className="flex justify-end mx-auto max-w-full px-2 sm:px-6 lg:px-8">
@@ -47,7 +50,7 @@ export default function Header() {
                                     <Menu.Item>
                                         {({ active }) => (
                                             <Link
-                                                to="#"
+                                                to="/admin/dashboard"
                                                 className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                             >
                                                 Главная
@@ -56,12 +59,12 @@ export default function Header() {
                                     </Menu.Item>
                                     <Menu.Item>
                                         {({ active }) => (
-                                            <Link
-                                                to='/auth'
+                                            <button
+                                                onClick={() => setSuccess(false)}
                                                 className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                             >
                                                 Выйти
-                                            </Link>
+                                            </button>
                                         )}
                                     </Menu.Item>
                                 </Menu.Items>
