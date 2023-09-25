@@ -1,7 +1,10 @@
+import {
+  useState,
+  useContext
+} from 'react';
 import './assets/styles/App.css'
 import {
   Outlet,
-  useLocation,
 } from 'react-router-dom';
 import {
   Header,
@@ -11,16 +14,15 @@ import {
 import {
   Auth
 } from './components/page'
+import AuthContext from './context/AuthProvider';
 
 function App() {
-  const location = useLocation()
+  const { success } = useContext(AuthContext) as any
 
   return (
     <>
       {
-        location.pathname === '/' ?
-          <Auth />
-          :
+        success ?
           <>
             <section className='grid grid-cols-[15rem_auto]'>
               <Sidebar />
@@ -33,6 +35,8 @@ function App() {
             </section>
             <Footer />
           </>
+          :
+          <Auth />
       }
     </>
   )

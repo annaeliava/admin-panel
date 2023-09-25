@@ -1,3 +1,4 @@
+import React from 'react';
 import { createBrowserRouter } from 'react-router-dom'
 import App from './App';
 import {
@@ -11,7 +12,7 @@ const router = createBrowserRouter([
         path: "",
         element: <App />,
         children: [
-            { path: '/', element: <Auth /> },
+            { path: '/auth', element: <Auth /> },
             { path: '/admin/dashboard', element: <Main /> },
             { path: '/admin/orders', element: <Orders /> },
         ]
@@ -19,4 +20,3 @@ const router = createBrowserRouter([
 ]);
 
 export default router
-

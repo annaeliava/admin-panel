@@ -1,15 +1,19 @@
+import React, { useContext } from "react"
+import AdminApi from "../../../api/users"
 import {
     useForm,
     SubmitHandler
 } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
+import AuthContext from "../../../context/AuthProvider"
 
 type FormInputs = {
-    email: string
-    password: string
+    email: string,
+    password: string,
 }
 
-function Auth() {
+const Auth = () => {
+    const { setSuccess } = useContext(AuthContext) as any
     const {
         register,
         handleSubmit,
@@ -17,30 +21,29 @@ function Auth() {
         formState: { errors },
     } = useForm<FormInputs>({
         defaultValues: {
-            email: '',
-            password: '',
+            email: "email@example.com",
+            password: "1111",
         }
     })
 
-    const navigate = useNavigate()
+    const onSubmit: SubmitHandler<FormInputs> = async (data) => {
+        const email = data.email;
+        const password = data.password;
 
-    const onSubmit: SubmitHandler<FormInputs> = (data) => {
-        if (data.email === 'email@example.com' && data.password === '1111') {
-            navigate('/admin/dashboard')
-        } else if (data.email !== 'email@example.com' && data.password !== '1111') {
-            setError('email', {
-                type: 'manual',
-            })
-            setError('password', {
-                type: 'manual',
-            })
-        } else if (data.password !== '1111') {
-            setError('password', {
-                type: 'manual',
-            })
-        } else setError('email', {
-            type: 'manual',
-        })
+        for (let i = 0; i < AdminApi.length; i++) {
+            if (AdminApi[i].id === "admin") {
+                if (AdminApi[i].email === email && AdminApi[i].password === password) {
+                    setSuccess(true)
+                } else {
+                    setError('email', {
+                        type: 'manual'
+                    })
+                    setError('password', {
+                        type: 'manual'
+                    })
+                }
+            }
+        }
     }
 
     return (
