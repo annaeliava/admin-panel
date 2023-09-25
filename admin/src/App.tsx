@@ -28,7 +28,7 @@ function App() {
               <Sidebar />
               <section>
                 <Header />
-                <main className='mx-auto max-w-full h-screen py-2 px-2 sm:px-6 sm:py-6 lg:px-8 lg:py-8'>
+                <main className='mx-auto max-w-full h-fit py-2 px-2 sm:px-6 sm:py-6 lg:px-8 lg:py-8'>
                   <Outlet />
                 </main>
               </section>
