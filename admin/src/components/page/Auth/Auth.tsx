@@ -5,6 +5,7 @@ import {
     SubmitHandler
 } from "react-hook-form"
 import AuthContext from "../../../context/AuthProvider"
+import { useNavigate } from "react-router-dom"
 
 type FormInputs = {
     email: string,
@@ -25,6 +26,8 @@ const Auth = () => {
         }
     })
 
+    const navigate = useNavigate();
+
     const onSubmit: SubmitHandler<FormInputs> = async (data) => {
         const email = data.email;
         const password = data.password;
@@ -33,6 +36,7 @@ const Auth = () => {
             if (AdminApi[i].id === "admin") {
                 if (AdminApi[i].email === email && AdminApi[i].password === password) {
                     setSuccess(true)
+                    navigate('/admin-panel/main')
                 } else {
                     setError('email', {
                         type: 'manual'

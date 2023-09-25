@@ -11,7 +11,7 @@ const Sidebar = () => {
     const { setSuccess } = useContext(AuthContext) as any
 
     const handleMain = () => {
-        navigate("/admin-panel/")
+        navigate("/admin-panel/main")
         setTitle('Главная')
     }
 
