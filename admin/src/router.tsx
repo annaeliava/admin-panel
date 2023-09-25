@@ -12,8 +12,8 @@ const router = createBrowserRouter([
         element: <App />,
         children: [
             { path: '/admin-panel/auth', element: <Auth /> },
-            { path: '/admin-panel/admin/dashboard', element: <Main /> },
-            { path: '/admin-panel/admin/orders', element: <Orders /> },
+            { path: '/admin-panel/', element: <Main /> },
+            { path: '/admin-panel/orders', element: <Orders /> },
         ]
     },
 ]);
